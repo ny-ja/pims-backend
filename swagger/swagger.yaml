@@ -1,0 +1,42 @@
+swagger: '2.0'
+info:
+  title: User API
+  description: API for managing users
+  version: '1.0.0'
+host: localhost:3000
+basePath: /api
+schemes:
+  - http
+paths:
+  /users:
+    get:
+      summary: List all users
+      responses:
+        200:
+          description: An array of users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+    post:
+      summary: Create a user
+      parameters:
+        - in: body
+          name: user
+          description: The user to create
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        201:
+          description: User created
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      email:
+        type: string
